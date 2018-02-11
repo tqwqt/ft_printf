@@ -67,6 +67,3 @@ fclean: clean
 	/bin/rm -rf libft/libft.a
 
 re : fclean all
-
-test: all
-	gcc -o test main.c -L. -lftprintf
