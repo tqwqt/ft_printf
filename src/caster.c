@@ -18,8 +18,8 @@ void					ft_caster(t_flags *arg, va_list ap)
 		ft_cast_ddi(ap, arg);
 	else if (ft_strchr("xX", arg->type))
 		ft_cast_xx(ap, arg);
-//	else if (ft_strchr("cC", arg->type))
-//		ft_cast_c(ap, arg);
+	else if (ft_strchr("cC", arg->type))
+		ft_cast_c(ap, arg);
 	else if (ft_strchr("sS", arg->type))
 		ft_cast_ss(ap, arg);
 	else if (ft_strchr("oO", arg->type))
