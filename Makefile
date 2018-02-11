@@ -51,20 +51,20 @@ all: $(NAME)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(NAME): $(LIBFT) $(OBJ)
-			@cp libft/libft.a ./$(NAME)
-			@ar rc $(NAME) $(OBJ)
-			@ranlib $(NAME)
+			cp libft/libft.a ./$(NAME)
+			ar rc $(NAME) $(OBJ)
+			ranlib $(NAME)
 
 $(LIBFT):
-	@make -C $(LIBDIR)
+	make -C $(LIBDIR)
 
 clean:
-	@/bin/rm -rf *.o
-	@make clean -C $(LIBDIR)
+	/bin/rm -rf *.o
+	make clean -C $(LIBDIR)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
-	@/bin/rm -rf libft/libft.a
+	/bin/rm -f $(NAME)
+	/bin/rm -rf libft/libft.a
 
 re : fclean all
 
