@@ -64,11 +64,11 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(SRC)
-	gcc $(FLAGS) -c ft_printf.c $(SRC) $(LIBSRC) -I hdr
-	ar rc $(NAME) $(OBJ)
+	@gcc $(FLAGS) -c ft_printf.c $(SRC) $(LIBSRC) -I hdr
+	@ar rc $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 re: fclean all
