@@ -33,8 +33,6 @@ LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
 SRCDIR = src
-		
-_OBJ = $(SRC:%.c=%.o)
 
 _DEPS = libftprintf.h
 
