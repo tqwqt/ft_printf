@@ -18,8 +18,9 @@
 # include <wchar.h>
 # include <stdarg.h>
 # include <stdlib.h>
+# include "../libft/libft.h"
 
-typedef struct		s_struct
+typedef struct		s_flags
 {
 	short			plus;
 	short			minus;
@@ -35,22 +36,6 @@ typedef struct		s_struct
 	int				i;
 }					t_flags;
 
-void				ft_bzero(void *s, size_t n);
-int					ft_atoi(char *str);
-int					ft_tolower(int c);
-size_t				ft_strlen(const char *s);
-char				*ft_strchr(const char *s, int c);
-char				*ft_strstr(char *str, const char *to_find);
-char				*ft_strnstr(const char *str,
-	const char *to_find, size_t len);
-char				*ft_strdup(const char *src);
-char				*ft_memset(void *s, char c, size_t n);
-char				*ft_itoa(intmax_t n);
-void				ft_strdel(char **as);
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
-char				*ft_strjoin(char *s1, char *s2);
-char				*ft_strnew(size_t size);
-char				*ft_itoa_base(uintmax_t value, uintmax_t base);
 t_flags				*ft_pars_arg(char *arg_s, t_flags *arg);
 int					ft_printf(const char *format, ...);
 t_flags				*ft_pars(char *s, t_flags *arg, int *res, va_list ap);
