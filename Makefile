@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-FILES = ft_printf.c \
+SRC = ft_printf.c \
 	parser.c \
 	caster.c \
 	flags.c \
@@ -20,41 +20,53 @@ FILES = ft_printf.c \
 	cast_x.c \
 	casto.c
 
-LDIR = ./libft
+NAME = libftprintf.a
 
-LIBFT = $(LDIR)/libft.a
-
-OBJ = $(FILES:.c=.o)
-
-_DEPS = libftprintf.h
+CC = gcc -Wall -Wextra -Werror
 
 IDIR = ./hdr
 
-SDIR = src
+CFLAGS = -I$(IDIR)
+
+LIBDIR = ./libft
+
+LIBFT = $(LIBDIR)/libft.a
+
+SRCDIR = src
+		
+_OBJ = $(SRC:%.c=%.o)
+
+_DEPS = libftprintf.h
+
+OBJ = $(SRC:.c=.o)
 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-NAME = libftprintf.a
-
-KEYS = -Wall -Werror -Wextra
+.PHONY: all clean fclean re
+.NOTPARALLEL: all clean fclean re
 
 all: $(NAME)
 
-%.o: $(SDIR)/%.c $(DEPS)
-	gcc $(KEYS) -c -o $@ $< -I$(IDIR)
+%.o: $(SRCDIR)/%.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@cp libft/libft.a ./$(NAME)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+			@cp libft/libft.a ./$(NAME)
+			@ar rc $(NAME) $(OBJ)
+			@ranlib $(NAME)
 
 $(LIBFT):
-	@make -C libft
+	@make -C $(LIBDIR)
 
 clean:
-	@make clean -C $(LDIR)
-	/bin/rm -f $(OBJ)
+	@/bin/rm -rf *.o
+	@make clean -C $(LIBDIR)
+
 fclean: clean
-	/bin/rm -f libft/libft.a
-	/bin/rm -f $(NAME)
-re: fclean all
+	@/bin/rm -f $(NAME)
+	@/bin/rm -rf libft/libft.a
+
+re : fclean all
+
+test: all
+	gcc -o test main.c -L. -lftprintf
