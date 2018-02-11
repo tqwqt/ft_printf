@@ -12,10 +12,33 @@
 
 #include "libftprintf.h"
 
-t_flags		*ft_pars(char *s, t_flags *arg, int *res, va_list ap)
+int					ft_printf(const char *format, ...)
 {
-	int		end;
-	int		p;
+	va_list ap;
+	t_flags *arg;
+	int		res;
+	char	*s;
+
+	arg = NULL;
+	res = 0;
+	if (format)
+	{
+		s = ft_strdup(format);
+		if (s[0] == '%' && s[1] == '\0')
+			return (0);
+		va_start(ap, format);
+		arg = ft_pars(s, arg, &res, ap);
+		free(arg);
+		arg = NULL;
+		va_end(ap);
+	}
+	return (res);
+}
+
+t_flags				*ft_pars(char *s, t_flags *arg, int *res, va_list ap)
+{
+	int				end;
+	int				p;
 
 	end = ft_strlen(s);
 	p = 0;
@@ -40,12 +63,12 @@ t_flags		*ft_pars(char *s, t_flags *arg, int *res, va_list ap)
 	return (arg);
 }
 
-int			ft_putstr_w(char *s, char c, int start)
+int					ft_putstr_w(char *s, char c, int start)
 {
-	unsigned int i;
-	char		*tmp;
-	int			s_start;
-	
+	unsigned int	i;
+	char			*tmp;
+	int				s_start;
+
 	i = 0;
 	tmp = NULL;
 	s_start = start;
@@ -69,7 +92,7 @@ int			ft_putstr_w(char *s, char c, int start)
 	return (i);
 }
 
-t_flags		*ft_arg_clear(t_flags *arg)
+t_flags				*ft_arg_clear(t_flags *arg)
 {
 	arg->plus = 0;
 	arg->minus = 0;
@@ -84,27 +107,4 @@ t_flags		*ft_arg_clear(t_flags *arg)
 	arg->neg = 0;
 	arg->i = arg->i;
 	return (arg);
-}
-
-int			ft_printf(const char *format, ...)
-{
-	va_list ap;
-	t_flags *arg;
-	int		res;
-	char	*s;
-
-	arg = NULL;
-	res = 0;
-	if (format)
-	{
-		s = ft_strdup(format);
-		if (s[0] == '%' && s[1] == '\0')
-			return (0);
-		va_start(ap, format);
-		arg = ft_pars(s, arg, &res, ap);
-		free(arg);
-		arg = NULL;
-		va_end(ap);
-	}
-	return (res);
 }
