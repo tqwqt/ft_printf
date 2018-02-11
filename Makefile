@@ -30,6 +30,8 @@ CFLAGS = -I$(IDIR)
 
 LIBDIR = ./libft
 
+
+
 LIBFT = $(LIBDIR)/libft.a
 
 SRCDIR = src
