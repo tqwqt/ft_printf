@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhavryle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/26 18:38:44 by vhavryle          #+#    #+#             */
-/*   Updated: 2017/10/26 18:38:47 by vhavryle         ###   ########.fr       */
+/*   Created: 2018/02/11 16:25:13 by vhavryle          #+#    #+#             */
+/*   Updated: 2018/02/11 16:25:16 by vhavryle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define LIBFTPRINTF_H
 
 # include <string.h>
-# include <stdlib.h>
-# include <stdarg.h>
 # include <unistd.h>
 # include <wchar.h>
+# include <stdarg.h>
+# include <stdlib.h>
 
 typedef struct		s_struct
 {
@@ -44,7 +44,7 @@ char				*ft_strstr(char *str, const char *to_find);
 char				*ft_strnstr(const char *str,
 	const char *to_find, size_t len);
 char				*ft_strdup(const char *src);
-void				*ft_memset(void *s, int c, size_t n);
+char				*ft_memset(void *s, char c, size_t n);
 char				*ft_itoa(intmax_t n);
 void				ft_strdel(char **as);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);

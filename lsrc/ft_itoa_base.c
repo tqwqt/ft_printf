@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libftprintf.h"
-#include <stdio.h>
 
 static int		ft_itoa_cntr(uintmax_t n, uintmax_t base)
 {

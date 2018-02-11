@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libftprintf.h"
 
 static	int	at_hlp(int i, char *str, int sign)
 {

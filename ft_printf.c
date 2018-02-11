@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdlib.h>
 #include "libftprintf.h"
 
 t_flags		*ft_pars(char *s, t_flags *arg, int *res, va_list ap)
