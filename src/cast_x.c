@@ -98,3 +98,20 @@ char			*ft_strtolow(char *s)
 		s[i] = ft_tolower(s[i]);
 	return (s);
 }
+
+void			ft_no_unic(va_list ap, t_flags *arg)
+{
+	char c;
+
+	c = va_arg(ap, int);
+	if (arg->minus == 0)
+	{
+		ft_flag_check(arg, 1);
+		write(1, &c, 1);
+	}
+	else
+	{
+		write(1, &c, 1);
+		ft_flag_check(arg, 1);
+	}
+}
