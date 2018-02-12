@@ -43,7 +43,12 @@ int					ft_pars_uni(wchar_t a, t_flags *arg, int bits)
 	mask = 0;
 	act = ft_act_bits(a);
 	if (act <= 7)
+	{
+		act = (char)a;
+		arg->b_count += 1;
+		write(1, &act, 1);
 		return (--bits);
+	}
 	else if (act > 7 && act < 12)
 		mask = 192;
 	else if (act > 11 && act < 17)
