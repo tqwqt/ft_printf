@@ -99,19 +99,24 @@ char			*ft_strtolow(char *s)
 	return (s);
 }
 
-void			ft_no_unic(va_list ap, t_flags *arg)
+void			ft_no_unic(va_list ap, t_flags *arg, char cc)
 {
 	char c;
 
-	c = va_arg(ap, int);
+	if (ap != NULL)
+		c = va_arg(ap, int);
+	else
+		c = cc;
 	if (arg->minus == 0)
 	{
 		ft_flag_check(arg, 1);
 		write(1, &c, 1);
+		arg->b_count++;
 	}
 	else
 	{
 		write(1, &c, 1);
 		ft_flag_check(arg, 1);
+		arg->b_count++;
 	}
 }

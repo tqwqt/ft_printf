@@ -98,7 +98,7 @@ int			ft_act_bits(wchar_t a)
 	int		i;
 
 	i = 0;
-	while (a)
+	while (a && i < 2147483647)
 	{
 		a >>= 1;
 		i++;
@@ -109,8 +109,15 @@ int			ft_act_bits(wchar_t a)
 void		ft_cast_c(va_list ap, t_flags *arg)
 {
 	wchar_t a;
+	int		act;
 
 	a = va_arg(ap, wint_t);
+	act = ft_act_bits(a);
+	if (act <= 7)
+	{
+		ft_no_unic(NULL, arg, (char)a);
+		return ;
+	}
 	if (arg->type == 'c' && arg->size == 'l')
 		arg->type = 'C';
 	if (arg->minus == 0)

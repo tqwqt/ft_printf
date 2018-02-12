@@ -42,13 +42,8 @@ int					ft_pars_uni(wchar_t a, t_flags *arg, int bits)
 
 	mask = 0;
 	act = ft_act_bits(a);
-	if (act <= 7 || arg->type == 'c' || MB_CUR_MAX == 1)
-	{
-		act = (char)a;
-		arg->b_count += 1;
-		write(1, &act, 1);
+	if (act <= 7)
 		return (--bits);
-	}
 	else if (act > 7 && act < 12)
 		mask = 192;
 	else if (act > 11 && act < 17)
@@ -99,7 +94,7 @@ int					ft_kostil_wchar_prec_len(wchar_t *a, t_flags *arg)
 	{
 		z = 0;
 		act = ft_act_bits(a[i]);
-		if (act <= 7 || arg->type == 'c')
+		if (act <= 7)
 			z = 1;
 		else if (act > 7 && act < 12)
 			z = 2;
