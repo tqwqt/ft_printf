@@ -36,7 +36,7 @@ typedef struct		s_flags
 	int				i;
 }					t_flags;
 
-void				ft_no_unic(va_list ap, t_flags *arg);
+void				ft_no_unic(va_list ap, t_flags *arg, char cc);
 t_flags				*ft_pars_arg(char *arg_s, t_flags *arg);
 int					ft_printf(const char *format, ...);
 t_flags				*ft_pars(char *s, t_flags *arg, int *res, va_list ap);
