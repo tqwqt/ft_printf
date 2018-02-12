@@ -113,7 +113,7 @@ void		ft_cast_c(va_list ap, t_flags *arg)
 
 	a = va_arg(ap, wint_t);
 	act = ft_act_bits(a);
-	if (act <= 7)
+	if (act <= 7 || MB_CUR_MAX == 1)
 	{
 		ft_no_unic(NULL, arg, (char)a);
 		return ;

@@ -18,7 +18,7 @@ void					ft_caster(t_flags *arg, va_list ap)
 		ft_cast_ddi(ap, arg);
 	else if (ft_strchr("xX", arg->type))
 		ft_cast_xx(ap, arg);
-	else if ((arg->type == 'C' || (arg->type == 'c' && arg->size == 'l')) && MB_CUR_MAX != 1)
+	else if (arg->type == 'C' || (arg->type == 'c' && arg->size == 'l'))
 		ft_cast_c(ap, arg);
 	else if (arg->type == 'c' && arg->size != 'l')
 		ft_no_unic(ap, arg, 'c');

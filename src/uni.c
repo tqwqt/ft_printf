@@ -42,7 +42,7 @@ int					ft_pars_uni(wchar_t a, t_flags *arg, int bits)
 
 	mask = 0;
 	act = ft_act_bits(a);
-	if (act <= 7)
+	if (act <= 7 || MB_CUR_MAX == 1)
 	{
 		act = (char)a;
 		arg->b_count += 1;
